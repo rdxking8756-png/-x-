@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: rdx-bot
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: BASE_URL
+        sync: false
+      - key: FIREBASE_KEY_JSON
+        sync: false
+      - key: PROXY_LIST
+        sync: false
+      - key: USE_PROXY
+        value: "true"
+      - key: REQUIRE_API_KEY
+        value: "false"
+      - key: PROXY_MULTIPLIER
+        value: "10"
+      - key: API_DAILY_LIMIT
+        value: "500"
+      - key: RATE_LIMIT_MAX
+        value: "10"
+      - key: RATE_LIMIT_WINDOW
+        value: "60"
+      - key: PERMANENT_CHANNELS
+        value: "@RDXBIO2,@RDXSTORE8,-1004350090724,@tgaccountsold2,-1004302825534"
+      - key: PERMANENT_CHANNEL_LINKS
+        value: "https://t.me/RDXBIO2,https://t.me/RDXSTORE8,https://t.me/+dwreNz65_nFjZjY9,https://t.me/tgaccountsold2,https://t.me/+BwmSFj_UJ4k0NzI1"
+      - key: PERMANENT_CHANNEL_TITLES
+        value: "Rdx Team,Rdx Store,Rdx Free Src,Sell logs,Vip Src"
